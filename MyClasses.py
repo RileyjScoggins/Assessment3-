@@ -223,7 +223,6 @@ quizzes = {
         }
     ]
 }
-
 # Create the main window
 class QuizApp(tk.Tk):
     def __init__(self):
