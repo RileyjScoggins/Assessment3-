@@ -52,4 +52,3 @@ PHED-1015, What is 'savasana'?, The corpse pose for relaxation
 PHED-1015, What is 'yoga nidra'?, A state of conscious relaxation or yogic sleep
 PHED-1015, What is a common yoga prop?, Yoga mat
 PHED-1015, What does 'chakra' mean?, Energy centers in the body
-
