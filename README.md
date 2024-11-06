@@ -1,6 +1,6 @@
 # Quarterly-Assessment-3
 
-# Quiz Bowl Project
+## Quiz Bowl Project
 
 The **Quiz Bowl Project** is a quiz application designed to help users test their knowledge across multiple subjects. Built with Python, this project leverages a **SQLite database** and a **Tkinter-based GUI** to deliver a user-friendly quiz experience.
 
