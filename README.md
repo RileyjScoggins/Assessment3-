@@ -32,5 +32,3 @@ This project offers:
 
 ---
 
-## Project Structure
-
