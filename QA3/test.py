@@ -1,0 +1,86 @@
+import sqlite3
+
+# Connect to the existing questions.db database
+conn = sqlite3.connect('questions.db')
+cursor = conn.cursor()
+
+# Create the questions table if it does not already exist
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS questions (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        course_code TEXT,
+        question TEXT,
+        answer TEXT
+    )
+''')
+
+# List of questions to insert into the database
+questions = [
+    ("DS-3850", "What is the correct file extension for Python files?", ".py"),
+    ("DS-3850", "Which keyword is used to define a function in Python?", "def"),
+    ("DS-3850", "What data type is used to store a sequence of characters in Python?", "str"),
+    ("DS-3850", "What symbol is used to start a comment in Python?", "#"),
+    ("DS-3850", "How do you print output to the console in Python?", "print()"),
+    ("DS-3850", "Which operator is used for exponentiation in Python?", "**"),
+    ("DS-3850", "What is the output of print(type([]))?", "<class 'list'>"),
+    ("DS-3850", "What keyword is used to handle exceptions in Python?", "try-except"),
+    ("DS-3850", "What does the 'len' function do in Python?", "Returns the length of an object"),
+    ("DS-3850", "What is a dictionary in Python?", "A collection of key-value pairs"),
+    
+    ("DS-3860", "What does SQL stand for?", "Structured Query Language"),
+    ("DS-3860", "Which SQL statement is used to retrieve data?", "SELECT"),
+    ("DS-3860", "What SQL command is used to delete a table?", "DROP"),
+    ("DS-3860", "What SQL function is used to find the highest value in a column?", "MAX"),
+    ("DS-3860", "What is a primary key in a database?", "A unique identifier for each record"),
+    ("DS-3860", "What clause is used in SQL to filter records?", "WHERE"),
+    ("DS-3860", "What is a foreign key?", "A reference to a primary key in another table"),
+    ("DS-3860", "Which SQL statement is used to update data?", "UPDATE"),
+    ("DS-3860", "What is a JOIN in SQL?", "Combines rows from two or more tables"),
+    ("DS-3860", "What is normalization in databases?", "Organizing data to reduce redundancy"),
+    
+    ("DS-4210", "What does IT stand for?", "Information Technology"),
+    ("DS-4210", "What is the primary function of an operating system?", "Manages computer resources"),
+    ("DS-4210", "What is the purpose of a firewall?", "Controls network traffic"),
+    ("DS-4210", "What does 'URL' stand for?", "Uniform Resource Locator"),
+    ("DS-4210", "What is cybersecurity?", "Protection of systems from theft or damage"),
+    ("DS-4210", "What is cloud computing?", "Storing and accessing data over the internet"),
+    ("DS-4210", "What does Wi-Fi stand for?", "Wireless Fidelity"),
+    ("DS-4210", "What is the role of a database?", "Storing and organizing data"),
+    ("DS-4210", "What is artificial intelligence?", "Simulation of human intelligence processes"),
+    ("DS-4210", "What is a network?", "A system of interconnected computers"),
+    
+    ("DS-4220", "What is the main purpose of R?", "Statistical analysis"),
+    ("DS-4220", "What function is used to create a vector in R?", "c()"),
+    ("DS-4220", "What is a data frame in R?", "A table-like structure for data"),
+    ("DS-4220", "What symbol is used for assignment in R?", "<-"),
+    ("DS-4220", "What does the 'ggplot2' package do in R?", "Data visualization"),
+    ("DS-4220", "What is a list in R?", "A collection of different data types"),
+    ("DS-4220", "How do you install a package in R?", "install.packages()"),
+    ("DS-4220", "What is the function to read a CSV file in R?", "read.csv()"),
+    ("DS-4220", "What does the 'summary' function do in R?", "Provides summary statistics"),
+    ("DS-4220", "What is the 'tidyverse' in R?", "A collection of R packages for data science"),
+    
+    ("PHED-1015", "What does 'asana' mean in yoga?", "Postures"),
+    ("PHED-1015", "What is the primary purpose of yoga?", "To unite body and mind"),
+    ("PHED-1015", "What does 'pranayama' refer to?", "Breath control"),
+    ("PHED-1015", "Which type of yoga focuses on physical postures?", "Hatha yoga"),
+    ("PHED-1015", "What is meditation?", "A focused mental exercise"),
+    ("PHED-1015", "What does 'namaste' signify?", "A greeting meaning 'I bow to you'"),
+    ("PHED-1015", "What is 'savasana'?", "The corpse pose for relaxation"),
+    ("PHED-1015", "What is 'yoga nidra'?", "A state of conscious relaxation or yogic sleep"),
+    ("PHED-1015", "What is a common yoga prop?", "Yoga mat"),
+    ("PHED-1015", "What does 'chakra' mean?", "Energy centers in the body")
+]
+
+# Insert each question into the database
+for course_code, question, answer in questions:
+    cursor.execute('''
+        INSERT INTO questions (course_code, question, answer)
+        VALUES (?, ?, ?)
+    ''', (course_code, question, answer))
+
+# Commit the transaction and close the connection
+conn.commit()
+conn.close()
+
+print("All questions have been successfully inserted into the database.")
